@@ -4,12 +4,6 @@ pipeline {
   stages {
 
   stage('Performance Tests') {
-  agent {
-    label 'master'
-  }
-  when {
-    branch 'master'
-  }
   steps {
     deleteDir()
     checkout scm
