@@ -7,10 +7,12 @@ pipeline {
   steps {
     deleteDir()
     checkout scm
-    script:'''npm install
-              npm run lighthouse'''
+    bat label:'NPM', script:
+    '''npm install
+       npm run lighthouse'''
+    
   }
-  post {
+    post {
     always {
       publishHTML (target: [
         allowMissing: false,
