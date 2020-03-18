@@ -7,7 +7,7 @@ pipeline {
   steps {
     deleteDir()
     checkout scm
-    sh 'npm --version'
+    bat label: 'NPM version' running', script: '''npm --version'''
   }
 }
 
