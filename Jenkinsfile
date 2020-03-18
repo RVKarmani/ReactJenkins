@@ -7,9 +7,8 @@ pipeline {
   steps {
     deleteDir()
     checkout scm
-    bat label:'NPM', script:
-    '''npm install
-       npm run lighthouse'''
+    bat label:'NPM', script:'npm install'
+    bat label:'Light',script:'npm run lighthouse'
     
   }
     post {
