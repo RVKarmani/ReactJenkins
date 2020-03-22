@@ -6,7 +6,7 @@ pipeline {
 	    stage('React APP deployment') {
 	        steps {
                 sh "npm install"
-                sh "npm install forever --save"
+                sh "npm install forever -g"
                 sh "npm install lighthouse --save"
                 sh "forever start -c 'npm start' ./"
             }
