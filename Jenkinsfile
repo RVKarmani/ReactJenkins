@@ -12,15 +12,7 @@ pipeline {
 	    stage('NODE Build') {
 	        steps {
                 sh "npm install"
-                sh "npm install forever -g"
-                sh "npm install lighthouse --save"
             }
        	}
-	    
-	    stage('React APP deployment') {
-	        steps {
-                sh "forever start -c 'npm start' ./"
-            }
-        }
     }
 }
