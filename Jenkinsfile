@@ -6,7 +6,6 @@ pipeline {
 	    stage('React APP deployment') {
 	        steps {
                 sh "npm install"
-                sh "npm install forever -g"
                 sh "forever start -c 'npm start' ./"
             }
         }
