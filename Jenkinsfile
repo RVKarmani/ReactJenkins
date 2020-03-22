@@ -12,7 +12,7 @@ pipeline {
 
         stage('Performance Tests') {
             steps {
-                sh "npm run lighthouse
+                sh "npm run lighthouse"
                 sh "forever stop 0" 
             }
 
