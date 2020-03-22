@@ -8,7 +8,7 @@ pipeline {
     deleteDir()
     checkout scm
     bat label:'NPM', script:'npm install'
-    bat label:'Forever',script:'forever start -c "npm start"'
+    bat label:'Forever',script:'forever start -c "npm start" ./'
     bat label:'Light',script:'npm run lighthouse'
     
   }
