@@ -18,24 +18,14 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh '''set -x
-                      && set +x
-                      && set -x
-                      && npm test'''
+                sh '''set -x && set +x && set -x && npm test'''
             }
         }
         stage('Deliver') {
             steps {
-                sh ''' set -x
-                       && npm run build \
-                       && set +x 
-                       && set -x
-                       && npm start & sleep 1
-                       && echo $! > .pidfile
-                       && set +x '''
+                sh ''' set -x && npm run build && set +x && set -x && npm start & sleep 1 && echo $! > .pidfile && set +x '''
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh '''set -x
-                && kill $(cat .pidfile)'''
+                sh '''set -x && kill $(cat .pidfile)'''
             }
         }
     }
