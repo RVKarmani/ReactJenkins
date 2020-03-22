@@ -1,31 +1,19 @@
 pipeline {
   
-  agent {
-        docker {
-            image 'node:13-alpine' 
-            args '-p 3000:3000' 
-        }
-    }
-  
+  agent any
+  tools {nodejs "node"}
     stages {
-	    
-	    stage('NODE Build') {
+	    stage('React APP deployment') {
 	        steps {
                 sh "npm install"
                 sh "npm install forever -g"
-                sh "npm install lighthouse --save"
-            }
-       	}
-	    
-	    stage('React APP deployment') {
-	        steps {
                 sh "forever start -c 'npm start' ./"
             }
         }
 
         stage('Performance Tests') {
             steps {
-                sh "npm run lighthouse"
+                sh "npm run lighthouse
                 sh "forever stop 0" 
             }
 
